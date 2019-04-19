@@ -9,9 +9,11 @@ The starter repo contained all the CSS and HTML markup that may be used but omit
 ### Install [yarn](https://yarnpkg.com):  
 * macOS : 
 
-```bash brew install yarn```
-* Linux : 
+```bash 
+brew install yarn
 ```
+* Linux : 
+```bash
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
