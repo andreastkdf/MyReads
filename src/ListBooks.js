@@ -13,7 +13,7 @@ class ListBooks extends Component {
               <li key={books.id}>
                 <div className="book">
                   <div className="book-top">
-                    <div
+                    <div className="book-cover"
                       style={{
                         width: 128,
                         height: 193,

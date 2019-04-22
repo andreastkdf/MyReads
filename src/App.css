@@ -1,4 +1,6 @@
-html, body, .root {
+html,
+body,
+.root {
   height: 100%;
 }
 
@@ -6,7 +8,8 @@ body {
   line-height: 1.5;
 }
 
-body, .app {
+body,
+.app {
   background: white;
 }
 
@@ -14,14 +17,12 @@ body, .app {
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
-  text-align: center;
 }
 
 .list-books-title h1 {
   font-weight: 400;
-  margin: 0;
-  color: white;
+  margin: 0px 0 0 21px;
+  color: #2a2d50;
 }
 
 .list-books-content {
@@ -30,17 +31,27 @@ body, .app {
 }
 
 .bookshelf {
-  padding: 0 10px 20px;
+  /* padding: 0 10px 20px; */
+  background:white;
+  margin: 20px;
+  border-radius: 0.25em;
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 @media (min-width: 600px) {
   .bookshelf {
-    padding: 0 20px 40px;
+    /* padding: 0 20px 40px; */
   }
 }
 
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
+  padding: 25px 11px 25px 30px;
+  background: #d0e0cd;
+  color: #2a2e50;
+  border-radius: inherit;
+  border-bottom-left-radius: unset;
+  border-bottom-right-radius: unset;
 }
 
 .bookshelf-books {
@@ -59,11 +70,11 @@ body, .app {
   height: 50px;
   border-radius: 50%;
   background: #2e7d32;
-  background-image: url('./icons/add.svg');
+  background-image: url("./icons/add.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   font-size: 0;
   outline: 0;
 }
@@ -71,7 +82,6 @@ body, .app {
 .open-search button:hover {
   background-color: rgb(0, 102, 0);
 }
-
 
 /* search page */
 
@@ -82,7 +92,7 @@ body, .app {
   left: 0;
   z-index: 5;
   display: flex;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.23);
 }
 
 .search-books-input-wrapper {
@@ -104,7 +114,7 @@ body, .app {
   left: 15px;
   width: 50px;
   height: 53px;
-  background-image: url('./icons/arrow-back.svg');
+  background-image: url("./icons/arrow-back.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 28px;
@@ -169,12 +179,12 @@ button:active {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
-  background-image: url('./icons/arrow-drop-down.svg');
+  background: #2d7d31;
+  background-image: url("./icons/arrow-drop-down.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 20px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .book-shelf-changer select {
@@ -187,7 +197,7 @@ button:active {
 /* book cover */
 
 .book-cover {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background: #eee;
 }
 
