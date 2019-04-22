@@ -90,11 +90,13 @@ class BooksApp extends Component {
         ) : (
           <div className="list-books">
             <div className="list-books-title">
-              <h1>MyReads</h1>
+              <h1>
+                &#10074;&#10073;&#10072; MyReads &#10074;&#10073;&#10072;
+              </h1>
             </div>
             <div className="list-books-content">
               <div>
-                <ListBooks books={testData.books} shelf="Currently Reading"/>
+                <ListBooks books={testData.books} shelf="Currently Reading" />
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Want to Read</h2>
                   <div className="bookshelf-books">
