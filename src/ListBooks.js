@@ -1,7 +1,11 @@
 import React, { Component } from "react"
-// TODO: yarn add prop-types for checking props types
+import PropTypes from "prop-types"
 
 class ListBooks extends Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired
+  }
+
   render() {
     const { books, shelf } = this.props
     return (
@@ -13,11 +17,12 @@ class ListBooks extends Component {
               <li key={books.id}>
                 <div className="book">
                   <div className="book-top">
-                    <div className="book-cover"
+                    <div
+                      className="book-cover"
                       style={{
                         width: 128,
                         height: 193,
-                        background: '#211e1e5c'
+                        background: "#211e1e5c"
                       }}
                     />
                     <div className="book-shelf-changer">

@@ -3,7 +3,6 @@ import * as BooksAPI from "./BooksAPI"
 import ListBooks from "./ListBooks"
 import "./App.css"
 
-
 class BooksApp extends Component {
   state = {
     /**
@@ -16,20 +15,20 @@ class BooksApp extends Component {
 
     currentlyReading: [],
     wantToRead: [],
-    read: [],
+    read: []
   }
 
   componentDidMount() {
     BooksAPI.getAll().then(books => {
-      this.setState((currentState) => ({
+      this.setState(currentState => ({
         currentlyReading: books.filter(b => {
-          return b.shelf === 'currentlyReading'
+          return b.shelf === "currentlyReading"
         }),
         wantToRead: books.filter(b => {
-          return b.shelf === 'wantToRead'
+          return b.shelf === "wantToRead"
         }),
         read: books.filter(b => {
-          return b.shelf === 'read'
+          return b.shelf === "read"
         })
       }))
     })
@@ -66,13 +65,14 @@ class BooksApp extends Component {
         ) : (
           <div className="list-books">
             <div className="list-books-title">
-              <h1>
-                &#10074;&#10073;&#10072; MyReads &#10074;&#10073;&#10072;
-              </h1>
+              <h1>&#10074;&#10073;&#10072; MyReads &#10074;&#10073;&#10072;</h1>
             </div>
             <div className="list-books-content">
               <div>
-                <ListBooks books={this.state.currentlyReading} shelf="Currently Reading" />
+                <ListBooks
+                  books={this.state.currentlyReading}
+                  shelf="Currently Reading"
+                />
                 <ListBooks books={this.state.wantToRead} shelf="Want to Read" />
                 <ListBooks books={this.state.read} shelf="Read" />
               </div>
