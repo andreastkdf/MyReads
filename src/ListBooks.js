@@ -13,16 +13,17 @@ class ListBooks extends Component {
         <h2 className="bookshelf-title">{shelf}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {books.map(books => (
-              <li key={books.id}>
+            {books.map(book => (
+              <li key={book.id}>
                 <div className="book">
                   <div className="book-top">
                     <div
                       className="book-cover"
                       style={{
                         width: 128,
-                        height: 193,
-                        background: "#211e1e5c"
+                        height: 170,
+                        background: `url(${book.imageLinks.smallThumbnail}) no-repeat center top`,
+                        backgroundSize: 'cover'
                       }}
                     />
                     <div className="book-shelf-changer">
@@ -39,8 +40,10 @@ class ListBooks extends Component {
                       </select>
                     </div>
                   </div>
-                  <div className="book-title">{books.title}</div>
-                  <div className="book-authors">{books.author}</div>
+                  <div className="book-title">{book.title}</div>
+                  <div className="book-authors">
+                    {book.authors.map((author) => `${author}\n`)}
+                  </div>
                 </div>
               </li>
             ))}
