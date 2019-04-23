@@ -38,12 +38,6 @@ body,
   box-shadow: 0 0px 1px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-@media (min-width: 600px) {
-  .bookshelf {
-    /* padding: 0 20px 40px; */
-  }
-}
-
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
   padding: 25px 11px 25px 30px;
