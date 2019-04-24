@@ -36,14 +36,27 @@ class BooksApp extends Component {
   }
 
   updateBookShelf = (newStatus, book) => {
-    let currentShelf = book.shelf
+    const currentShelf = book.shelf
+
+    if (newStatus !== "none" && currentShelf && currentShelf !== "none") {
+      this.setState(currentState => ({
+        [newStatus]: currentState[newStatus].concat([book]),
+        [currentShelf]: currentState[currentShelf].filter(c => {
+          return c.id !== book.id
+        })
+      }))
+    } else if (currentShelf || currentShelf === "none") {
+      this.setState(currentState => ({
+        [currentShelf]: currentState[currentShelf].filter(c => {
+          return c.id !== book.id
+        })
+      }))
+    } else {
+      this.setState(currentState => ({
+        [newStatus]: currentState[newStatus].concat([book])
+      }))
+    }
     book.shelf = newStatus
-    this.setState(currentState => ({
-      [newStatus]: currentState[newStatus].concat([book]),
-      [currentShelf]: currentState[currentShelf].filter(c => {
-        return c.id !== book.id
-      })
-    }))
   }
 
   render() {
