@@ -50,17 +50,6 @@ class BooksApp extends Component {
     }))
   }
 
-  whichShelf = (myReads, bookID) => {
-    let allBooks = [
-      ...myReads.currentlyReading,
-      ...myReads.wantToRead,
-      ...myReads.read
-    ]
-    let matching = allBooks.find(m => m.id === bookID)
-
-    return matching ? matching.shelf : "none"
-  }
-
   render() {
     return (
       <div className="app">
@@ -68,7 +57,6 @@ class BooksApp extends Component {
           <SearchBooks
             myReads={this.state}
             onUpdateBookShelf={this.updateBookShelf}
-            whichShelf={this.whichShelf}
           />
         ) : (
           <div className="list-books">
@@ -81,21 +69,18 @@ class BooksApp extends Component {
                   books={this.state.currentlyReading}
                   myReads={this.state}
                   shelfTitle="Currently Reading"
-                  whichShelf={this.whichShelf}
                   onUpdateBookShelf={this.updateBookShelf}
                 />
                 <BookShelf
                   books={this.state.wantToRead}
                   myReads={this.state}
                   shelfTitle="Want to Read"
-                  whichShelf={this.whichShelf}
                   onUpdateBookShelf={this.updateBookShelf}
                 />
                 <BookShelf
                   books={this.state.read}
                   myReads={this.state}
                   shelfTitle="Read"
-                  whichShelf={this.whichShelf}
                   onUpdateBookShelf={this.updateBookShelf}
                 />
               </div>

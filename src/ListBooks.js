@@ -5,12 +5,22 @@ class ListBooks extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
     myReads: PropTypes.object.isRequired,
-    whichShelf: PropTypes.func.isRequired,
     onUpdateBookShelf: PropTypes.func.isRequired
   }
 
+  whichShelf = (myReads, bookID) => {
+    let allBooks = [
+      ...myReads.currentlyReading,
+      ...myReads.wantToRead,
+      ...myReads.read
+    ]
+    let matching = allBooks.find(m => m.id === bookID)
+
+    return matching ? matching.shelf : "none"
+  }
+
   render() {
-    const { books, myReads, onUpdateBookShelf, whichShelf } = this.props
+    const { books, myReads, onUpdateBookShelf } = this.props
     return (
       <ol className="books-grid">
         {/* Check that books is not empty before rendering inside <ol> 
@@ -38,7 +48,7 @@ class ListBooks extends Component {
                       onChange={event =>
                         onUpdateBookShelf(event.target.value, book)
                       }
-                      value={whichShelf(myReads, book.id)}
+                      value={this.whichShelf(myReads, book.id)}
                     >
                       <option value="move" disabled>
                         Move to...

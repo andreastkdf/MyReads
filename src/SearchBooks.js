@@ -5,7 +5,6 @@ import PropTypes from "prop-types"
 
 class SearchBooks extends Component {
   static propTypes = {
-    whichShelf: PropTypes.func.isRequired,
     onUpdateBookShelf: PropTypes.func.isRequired
   }
   
@@ -43,7 +42,7 @@ class SearchBooks extends Component {
 
   render() {
     const { foundBooks } = this.state
-    const { myReads, whichShelf, onUpdateBookShelf } = this.props
+    const { myReads, onUpdateBookShelf } = this.props
 
     return (
       <div className="search-books">
@@ -63,7 +62,7 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ListBooks books={foundBooks} myReads={myReads} onUpdateBookShelf={onUpdateBookShelf} whichShelf={whichShelf} />
+          <ListBooks books={foundBooks} myReads={myReads} onUpdateBookShelf={onUpdateBookShelf} />
         </div>
       </div>
     )
