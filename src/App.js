@@ -57,6 +57,7 @@ class BooksApp extends Component {
       }))
     }
     book.shelf = newStatus
+    BooksAPI.update(book, newStatus)
   }
 
   render() {
