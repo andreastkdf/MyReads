@@ -8,6 +8,10 @@ class ListBooks extends Component {
     onUpdateBookShelf: PropTypes.func.isRequired
   }
 
+  //  Helper function to return the shelf option required.
+  //  This function is specially needed for the search page
+  //  in order to set the initial options for the books not
+  //  in our library.
   whichShelf = (myReads, bookID) => {
     let allBooks = [
       ...myReads.currentlyReading,
