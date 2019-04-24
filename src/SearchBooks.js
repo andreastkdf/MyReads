@@ -16,7 +16,7 @@ class SearchBooks extends Component {
   }
 
   performSearch = query => {
-    // Don't trigger an empty search
+    // Don't trigger API call on empty search
     query !== "" &&
       BooksAPI.search(query).then(books => {
         if (books.length > 1) {
@@ -37,6 +37,8 @@ class SearchBooks extends Component {
 
   render() {
     const { foundBooks } = this.state
+    const { myReads } = this.props
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -55,7 +57,7 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ListBooks books={foundBooks} shelf="" />
+          <ListBooks books={foundBooks} myReads={myReads} />
         </div>
       </div>
     )

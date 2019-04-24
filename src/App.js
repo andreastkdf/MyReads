@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import * as BooksAPI from "./BooksAPI"
 import BookShelf from "./BookShelf"
-import SearchBooks from './SearchBooks'
+import SearchBooks from "./SearchBooks"
 import "./App.css"
 
 class BooksApp extends Component {
@@ -16,7 +16,7 @@ class BooksApp extends Component {
 
     currentlyReading: [],
     wantToRead: [],
-    read: [],
+    read: []
   }
 
   componentDidMount() {
@@ -34,16 +34,14 @@ class BooksApp extends Component {
       }))
     })
   }
-
-  updateBookStatus = newStatus => {
-
-  }
+  
+  updateBookShelf = newStatus => {}
 
   render() {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <SearchBooks/>
+          <SearchBooks myReads={this.state} />
         ) : (
           <div className="list-books">
             <div className="list-books-title">
@@ -53,11 +51,19 @@ class BooksApp extends Component {
               <div>
                 <BookShelf
                   books={this.state.currentlyReading}
-                  shelf ="currentlyReading"
+                  myReads={this.state}
                   shelfTitle="Currently Reading"
                 />
-                <BookShelf books={this.state.wantToRead} shelf="wantToRead" shelfTitle="Want to Read" />
-                <BookShelf books={this.state.read} shelf="read" shelfTitle="Read" />
+                <BookShelf
+                  books={this.state.wantToRead}
+                  myReads={this.state}
+                  shelfTitle="Want to Read"
+                />
+                <BookShelf
+                  books={this.state.read}
+                  myReads={this.state}
+                  shelfTitle="Read"
+                />
               </div>
             </div>
             <div className="open-search">

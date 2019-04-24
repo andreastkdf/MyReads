@@ -4,11 +4,26 @@ import PropTypes from "prop-types"
 class ListBooks extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
-    shelf: PropTypes.string
+    myReads: PropTypes.object.isRequired
+  }
+
+  //  Helper function to return the shelf option required.
+  //  This function is specially needed for the search page
+  //  in order to set the initial options for the books not
+  //  in our library.
+  whichShelf = (myReads, bookID) => {
+    let allBooks = [
+      ...myReads.currentlyReading,
+      ...myReads.wantToRead,
+      ...myReads.read
+    ]
+    let matching = allBooks.find(f => f.id === bookID)
+    
+    return matching ? matching.shelf : "none"
   }
 
   render() {
-    const { books, shelf } = this.props
+    const { books, myReads } = this.props
     return (
       <ol className="books-grid">
         {/* Check that books is not empty before rendering inside <ol> 
@@ -32,7 +47,7 @@ class ListBooks extends Component {
                     }}
                   />
                   <div className="book-shelf-changer">
-                    <select defaultValue={shelf}>
+                    <select defaultValue={this.whichShelf(myReads, book.id)}>
                       <option value="move" disabled>
                         Move to...
                       </option>
