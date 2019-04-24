@@ -34,14 +34,42 @@ class BooksApp extends Component {
       }))
     })
   }
-  
-  updateBookShelf = newStatus => {}
+
+  //  Helper function to return the shelf option required.
+  //  This function is specially needed for the search page
+  //  in order to set the initial options for the books not
+  //  in our library.
+  updateBookShelf = (newStatus, book) => {
+    let currentShelf = book.shelf
+    book.shelf = newStatus
+    this.setState(currentState => ({
+      [newStatus]: currentState[newStatus].concat([book]),
+      [currentShelf]: currentState[currentShelf].filter(c => {
+        return c.id !== book.id
+      })
+    }))
+  }
+
+  whichShelf = (myReads, bookID) => {
+    let allBooks = [
+      ...myReads.currentlyReading,
+      ...myReads.wantToRead,
+      ...myReads.read
+    ]
+    let matching = allBooks.find(m => m.id === bookID)
+
+    return matching ? matching.shelf : "none"
+  }
 
   render() {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <SearchBooks myReads={this.state} />
+          <SearchBooks
+            myReads={this.state}
+            onUpdateBookShelf={this.updateBookShelf}
+            whichShelf={this.whichShelf}
+          />
         ) : (
           <div className="list-books">
             <div className="list-books-title">
@@ -53,16 +81,22 @@ class BooksApp extends Component {
                   books={this.state.currentlyReading}
                   myReads={this.state}
                   shelfTitle="Currently Reading"
+                  whichShelf={this.whichShelf}
+                  onUpdateBookShelf={this.updateBookShelf}
                 />
                 <BookShelf
                   books={this.state.wantToRead}
                   myReads={this.state}
                   shelfTitle="Want to Read"
+                  whichShelf={this.whichShelf}
+                  onUpdateBookShelf={this.updateBookShelf}
                 />
                 <BookShelf
                   books={this.state.read}
                   myReads={this.state}
                   shelfTitle="Read"
+                  whichShelf={this.whichShelf}
+                  onUpdateBookShelf={this.updateBookShelf}
                 />
               </div>
             </div>
