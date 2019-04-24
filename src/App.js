@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import * as BooksAPI from "./BooksAPI"
 import BookShelf from "./BookShelf"
 import SearchBooks from "./SearchBooks"
+import { Route, Link } from "react-router-dom"
 import "./App.css"
 
 class BooksApp extends Component {
@@ -12,8 +13,6 @@ class BooksApp extends Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false,
-
     currentlyReading: [],
     wantToRead: [],
     read: []
@@ -63,45 +62,53 @@ class BooksApp extends Component {
   render() {
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
-          <SearchBooks
-            myReads={this.state}
-            onUpdateBookShelf={this.updateBookShelf}
-          />
-        ) : (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>&#10074;&#10073;&#10072; MyReads &#10074;&#10073;&#10072;</h1>
-            </div>
-            <div className="list-books-content">
-              <div>
-                <BookShelf
-                  books={this.state.currentlyReading}
-                  myReads={this.state}
-                  shelfTitle="Currently Reading"
-                  onUpdateBookShelf={this.updateBookShelf}
-                />
-                <BookShelf
-                  books={this.state.wantToRead}
-                  myReads={this.state}
-                  shelfTitle="Want to Read"
-                  onUpdateBookShelf={this.updateBookShelf}
-                />
-                <BookShelf
-                  books={this.state.read}
-                  myReads={this.state}
-                  shelfTitle="Read"
-                  onUpdateBookShelf={this.updateBookShelf}
-                />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <div className="list-books">
+              <div className="list-books-title">
+                <h1>
+                  &#10074;&#10073;&#10072; MyReads &#10074;&#10073;&#10072;
+                </h1>
               </div>
+              <div className="list-books-content">
+                <div>
+                  <BookShelf
+                    books={this.state.currentlyReading}
+                    myReads={this.state}
+                    shelfTitle="Currently Reading"
+                    onUpdateBookShelf={this.updateBookShelf}
+                  />
+                  <BookShelf
+                    books={this.state.wantToRead}
+                    myReads={this.state}
+                    shelfTitle="Want to Read"
+                    onUpdateBookShelf={this.updateBookShelf}
+                  />
+                  <BookShelf
+                    books={this.state.read}
+                    myReads={this.state}
+                    shelfTitle="Read"
+                    onUpdateBookShelf={this.updateBookShelf}
+                  />
+                </div>
+              </div>
+              <Link to="/search" className="open-search">
+                <button>Add a book</button>
+              </Link>
             </div>
-            <div className="open-search">
-              <button onClick={() => this.setState({ showSearchPage: true })}>
-                Add a book
-              </button>
-            </div>
-          </div>
-        )}
+          )}
+        />
+        <Route
+          path="/search"
+          render={({ history }) => (
+            <SearchBooks
+              myReads={this.state}
+              onUpdateBookShelf={this.updateBookShelf}
+            />
+          )}
+        />
       </div>
     )
   }
