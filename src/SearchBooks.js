@@ -37,7 +37,6 @@ class SearchBooks extends Component {
 
   render() {
     const { foundBooks } = this.state
-
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -56,7 +55,7 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ListBooks books={foundBooks} />
+          <ListBooks books={foundBooks} shelf="" />
         </div>
       </div>
     )

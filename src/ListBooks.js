@@ -3,11 +3,12 @@ import PropTypes from "prop-types"
 
 class ListBooks extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    shelf: PropTypes.string
   }
 
   render() {
-    const { books } = this.props
+    const { books, shelf } = this.props
     return (
       <ol className="books-grid">
         {/* Check that books is not empty before rendering inside <ol> 
@@ -22,14 +23,16 @@ class ListBooks extends Component {
                     style={{
                       width: 128,
                       height: 170,
-                      background: `url(${
-                        book.imageLinks.smallThumbnail
-                      }) no-repeat center top`,
+                      background:
+                        book.imageLinks &&
+                        `url(${
+                          book.imageLinks.smallThumbnail
+                        }) no-repeat center top`,
                       backgroundSize: "cover"
                     }}
                   />
                   <div className="book-shelf-changer">
-                    <select>
+                    <select defaultValue={shelf}>
                       <option value="move" disabled>
                         Move to...
                       </option>

@@ -35,6 +35,10 @@ class BooksApp extends Component {
     })
   }
 
+  updateBookStatus = newStatus => {
+
+  }
+
   render() {
     return (
       <div className="app">
@@ -49,10 +53,11 @@ class BooksApp extends Component {
               <div>
                 <BookShelf
                   books={this.state.currentlyReading}
-                  shelf="Currently Reading"
+                  shelf ="currentlyReading"
+                  shelfTitle="Currently Reading"
                 />
-                <BookShelf books={this.state.wantToRead} shelf="Want to Read" />
-                <BookShelf books={this.state.read} shelf="Read" />
+                <BookShelf books={this.state.wantToRead} shelf="wantToRead" shelfTitle="Want to Read" />
+                <BookShelf books={this.state.read} shelf="read" shelfTitle="Read" />
               </div>
             </div>
             <div className="open-search">
