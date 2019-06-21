@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import ListBooks from "./ListBooks"
 import PropTypes from "prop-types"
 
