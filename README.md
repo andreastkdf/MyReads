@@ -1,7 +1,7 @@
 # MyReads Project
 ### Fist project to submit for Udacity React Nanodegree Program.
 
-A a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. The project emphasizes using React to build the application and provides an API server and client library that is used to persist information as you interact with the application.
+A bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. The project emphasizes using React to build the application and provides an API server and client library that is used to persist information as you interact with the application.
 
 The starter repo contained all the CSS and HTML markup that may be used but omits the React code that is required to complete the project. This saves some time as I didn't had to write all the CSS and HTML from scratch.
 
