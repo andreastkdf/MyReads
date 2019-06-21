@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import * as BooksAPI from "./BooksAPI"
 import BookShelf from "./BookShelf"
 import SearchBooks from "./SearchBooks"
-import { Route, Link } from "react-router-dom"
+import { HashRouter, Route, Link } from "react-router-dom"
 import "./App.css"
 
 class BooksApp extends Component {
@@ -55,55 +55,57 @@ class BooksApp extends Component {
 
   render() {
     return (
-      <div className="app">
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <div className="list-books">
-              <div className="list-books-title">
-                <h1>
-                  &#10074;&#10073;&#10072; MyReads &#10074;&#10073;&#10072;
-                </h1>
-              </div>
-              <div className="list-books-content">
-                <div>
-                  <BookShelf
-                    books={this.state.currentlyReading}
-                    myReads={this.state}
-                    shelfTitle="Currently Reading"
-                    onUpdateBookShelf={this.updateBookShelf}
-                  />
-                  <BookShelf
-                    books={this.state.wantToRead}
-                    myReads={this.state}
-                    shelfTitle="Want to Read"
-                    onUpdateBookShelf={this.updateBookShelf}
-                  />
-                  <BookShelf
-                    books={this.state.read}
-                    myReads={this.state}
-                    shelfTitle="Read"
-                    onUpdateBookShelf={this.updateBookShelf}
-                  />
+      <HashRouter basename="/">
+        <div className="app">
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <div className="list-books">
+                <div className="list-books-title">
+                  <h1>
+                    &#10074;&#10073;&#10072; MyReads &#10074;&#10073;&#10072;
+                  </h1>
                 </div>
+                <div className="list-books-content">
+                  <div>
+                    <BookShelf
+                      books={this.state.currentlyReading}
+                      myReads={this.state}
+                      shelfTitle="Currently Reading"
+                      onUpdateBookShelf={this.updateBookShelf}
+                    />
+                    <BookShelf
+                      books={this.state.wantToRead}
+                      myReads={this.state}
+                      shelfTitle="Want to Read"
+                      onUpdateBookShelf={this.updateBookShelf}
+                    />
+                    <BookShelf
+                      books={this.state.read}
+                      myReads={this.state}
+                      shelfTitle="Read"
+                      onUpdateBookShelf={this.updateBookShelf}
+                    />
+                  </div>
+                </div>
+                <Link to="/search" className="open-search">
+                  <button>Add a book</button>
+                </Link>
               </div>
-              <Link to="/search" className="open-search">
-                <button>Add a book</button>
-              </Link>
-            </div>
-          )}
-        />
-        <Route
-          path="/search"
-          render={({ history }) => (
-            <SearchBooks
-              myReads={this.state}
-              onUpdateBookShelf={this.updateBookShelf}
-            />
-          )}
-        />
-      </div>
+            )}
+          />
+          <Route
+            path="/search"
+            render={({ history }) => (
+              <SearchBooks
+                myReads={this.state}
+                onUpdateBookShelf={this.updateBookShelf}
+              />
+            )}
+          />
+        </div>
+      </HashRouter>
     )
   }
 }
